@@ -1,15 +1,89 @@
-version: '3.1'
+version: '3.8'
 services:
-  stats-server:
-    ports:
-      - "9090:9090"
-
-  stats-db:
-    image: postgres:14-alpine
-
-  ewm-service:
+  gateway:
+    build: .
+    image: ewm-gateway
+    container_name: gateway_container
     ports:
       - "8080:8080"
+    depends_on:
+      - ewm-service
+      - ewm-db
+    environment:
+      - SHAREIT_SERVER_URL=http://server:9191
+
+
+  ewm-service:
+    build: .
+    image: ewm-service-main
+    container_name: server_main_container
+    ports:
+      - "9191:9191"
+    depends_on:
+      - ewm-db
+    environment:
+      - DB_HOST=ewm-db
+      - DB_PORT=5432
+      - DB_NAME=main-postgre
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+
+  stats-server:
+    build: .
+    image: ewm-service
+    container_name: server_stats_container
+    ports:
+      - "9090:9090"
+    depends_on:
+      - stats-db
+    environment:
+      - DB_HOST=stats-db
+      - DB_PORT=5432
+      - DB_NAME=stats-postgre
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+
+  stats-db:
+    image: postgres:13.7-alpine
+    container_name: postgres_container_stats
+    volumes:
+      - /var/lib/postgresql/data/
+    ports:
+      - "6541:5432"
+    environment:
+      - POSTGRES_DB=stats-postgre
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
 
   ewm-db:
-    image: postgres:14-alpine
+    image: postgres:13.7-alpine
+    container_name: postgres_container_main
+    volumes:
+      - /var/lib/postgresql/data/
+    ports:
+      - "6542:5432"
+    environment:
+      - POSTGRES_DB=main-postgre
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+
+
+
+
+
+
+#version: '3.1'
+#services:
+#  stats-server:
+#    ports:
+#      - "9090:9090"
+#
+#  stats-db:
+#    image: postgres:14-alpine
+#
+#  ewm-service:
+#    ports:
+#      - "8080:8080"
+#
+#  ewm-db:
+#    image: postgres:14-alpine
