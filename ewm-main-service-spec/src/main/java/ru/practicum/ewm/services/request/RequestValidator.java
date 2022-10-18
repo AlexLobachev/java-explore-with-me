@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.practicum.ewm.models.event.State;
 import ru.practicum.ewm.models.request.Request;
+import ru.practicum.ewm.repositories.request.RequestRepository;
 
 import javax.validation.ValidationException;
 
