@@ -22,24 +22,24 @@ Template repository for ExploreWithMe project.
   - API основного сервиса делится на три части. Первая — публичная, доступна без регистрации любому пользователю сети. Вторая — закрытая, доступна только авторизованным пользователям. Третья — административная, для администраторов сервиса.
     - Структурная схема:
 
-      ![alt text](http://url/to/img.png)
+      ![alt text](https://github.com/HONDACIVIC5DDDDD/java-explore-with-me/blob/develop/ewm-main-service-spec.png)
 - *Сервис статистики (ewm-stats-service)*
   - Сервис статистики, призван собирать информацию. Во-первых, о количестве обращений пользователей к спискам событий и, во-вторых, о количестве запросов к подробной информации о событии. На основе этой информации должна формироваться статистика о работе приложения.
     - Структурная схема:
 
-      ![alt text](http://url/to/img.png)
+      ![alt text](https://github.com/HONDACIVIC5DDDDD/java-explore-with-me/blob/develop/ewm-stats-service.png)
 - *Сервис "шлюз" (gateway)*
   - Выполняет *первоначальную* валидацию входящих запросов без обращения к БД.
     - Структурная схема:
 
-      ![alt text](http://url/to/img.png)
+      ![alt text](https://github.com/HONDACIVIC5DDDDD/java-explore-with-me/blob/develop/gateway.png)
 - *Две базы данных ewm-db и stats-db*
   - Структурная схема БД ewm-db
   
-    ![alt text](http://url/to/img.png)
+    ![alt text](https://github.com/HONDACIVIC5DDDDD/java-explore-with-me/blob/develop/event.png)
   - Структурная схема БД stats-db
   
-    ![alt text](http://url/to/img.png)
+    ![alt text](https://github.com/HONDACIVIC5DDDDD/java-explore-with-me/blob/develop/event-stat.png)
 
 
 
