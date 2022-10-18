@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewm.models.category.Category;
 import ru.practicum.ewm.repositories.category.CategoryRepository;
+import ru.practicum.ewm.services.category.publish.PublicCategoryServiceImpl;
 
 /**
  * Класс бизнес логики категорий (для администратора).
@@ -20,14 +21,17 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
      * Поле зависимость от репозитория CategoryRepository
      */
     private final CategoryRepository categoryRepository;
+    private final PublicCategoryServiceImpl categoryService;
 
     /**
      * Метод - Изменение категории
      *
      * @param category - данные категории
+     * @return Category
      */
-    public void updateCategory(Category category) {
+    public Category updateCategory(Category category) {
         categoryRepository.updateCategory(category.getName(), category.getId());
+        return categoryService.getCategoryById(category.getId());
     }
 
     /**

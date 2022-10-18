@@ -45,9 +45,8 @@ public interface CompilationRepository extends JpaRepository<Compilation, Long> 
      * @param idComp - id подборки
      * @param pinned - закрепить/открепить
      */
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query("update Compilation c set c.pinned =?1 where c.id =?2")
-    @Transactional
     void updatePin(Boolean pinned, long idComp);
 
     /**

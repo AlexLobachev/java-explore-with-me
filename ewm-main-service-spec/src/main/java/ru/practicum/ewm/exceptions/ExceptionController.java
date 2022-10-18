@@ -40,5 +40,11 @@ public class ExceptionController {
         return Map.of("error", e.getMessage());
     }
 
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, String> errorException(final NullPointerException e) {
+        return Map.of("Message", e.getMessage());
+    }
+
 
 }

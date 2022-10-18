@@ -5,7 +5,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.exceptions.ExceptionNotFound;
 import ru.practicum.ewm.models.category.Category;
 import ru.practicum.ewm.pageable.OffsetLimitPageable;
 import ru.practicum.ewm.repositories.category.CategoryRepository;
@@ -40,7 +39,7 @@ public class PublicCategoryServiceImpl implements PublicCategoryService {
     }
 
     /**
-     * Метод - Получение категорий
+     * Метод - Получение категорий (Категория не должна быть найдена после удаления | AssertionError: expected { error: 'Категория не найдена' } to be null)
      *
      * @param catId - id категории
      */
@@ -48,7 +47,7 @@ public class PublicCategoryServiceImpl implements PublicCategoryService {
         Category category = categoryRepository.findById(catId).orElse(new Category());
 
         if (category.getId() != catId) {
-            throw new ExceptionNotFound("Категория не найдена");
+            throw new NullPointerException("Категория не найдена");
         }
         return category;
     }

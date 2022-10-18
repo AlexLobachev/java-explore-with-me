@@ -11,7 +11,6 @@ import ru.practicum.ewm.exceptions.ExceptionNotFound;
 import ru.practicum.ewm.models.event.Event;
 import ru.practicum.ewm.pageable.OffsetLimitPageable;
 import ru.practicum.ewm.repositories.event.EventRepository;
-import ru.practicum.ewm.repositories.location.LocationRepository;
 import ru.practicum.ewm.services.category.publish.PublicCategoryServiceImpl;
 import ru.practicum.ewm.services.event.EventValidator;
 import ru.practicum.ewm.services.request.RequestServiceImpl;

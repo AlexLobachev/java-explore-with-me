@@ -1,0 +1,16 @@
+server:
+  port: 8080
+ewm-main-service-spec:
+  url: http://localhost:9191
+
+
+
+
+
+
+
+
+#logging.level.org.springframework.web.client.RestTemplate=DEBUG
+#server.port=8080
+#
+#ewm-main-service-spec.url=http://localhost:9191

@@ -8,7 +8,6 @@ import ru.practicum.ewm.exceptions.ExceptionNotFound;
 import ru.practicum.ewm.models.compilation.Compilation;
 import ru.practicum.ewm.pageable.OffsetLimitPageable;
 import ru.practicum.ewm.repositories.compilation.CompilationRepository;
-import ru.practicum.ewm.repositories.event.EventRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

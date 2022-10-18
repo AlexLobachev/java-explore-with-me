@@ -2,6 +2,7 @@ package ru.practicum.ewm.services.compilation.admin;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewm.dtos.compilation.CompilationDto;
 import ru.practicum.ewm.models.compilation.Compilation;
 import ru.practicum.ewm.repositories.compilation.CompilationRepository;
@@ -17,6 +18,7 @@ import static ru.practicum.ewm.mappers.compilation.CompilationMapper.compilation
  */
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AdminCompilationServiceImpl implements AdminCompilationService {
     /**
      * Поле зависимость от репозитория CompilationRepository
@@ -82,6 +84,7 @@ public class AdminCompilationServiceImpl implements AdminCompilationService {
      * @param compId - id подборки которую необходимо прикрепить
      */
     public void pinCompilation(long compId) {
+        System.out.println("SADDDDDDDDDDDDDDDDD");
         compilationRepository.updatePin(true, compId);
     }
 }

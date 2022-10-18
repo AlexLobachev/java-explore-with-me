@@ -3,7 +3,7 @@ package ru.practicum.ewm.controllers.category.admin;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.ewm.models.category.Category;
-import ru.practicum.ewm.services.category.admin.AdminCategoryService;
+import ru.practicum.ewm.services.category.admin.AdminCategoryServiceImpl;
 
 /**
  * Класс контроллер категорий событий. (для Администратора)
@@ -18,7 +18,7 @@ public class CategoryControllerAdmin {
     /**
      * Поле зависимсость от сервисного класса CategoryServiceImpl
      */
-    private final AdminCategoryService categoryService;
+    private final AdminCategoryServiceImpl categoryService;
 
     /**
      * Метод - обновления категории
@@ -27,8 +27,8 @@ public class CategoryControllerAdmin {
      * @param category - сущность (категория)
      */
     @PatchMapping
-    public void updateCategory(@RequestBody Category category) {
-        categoryService.updateCategory(category);
+    public Category updateCategory(@RequestBody Category category) {
+        return categoryService.updateCategory(category);
     }
 
     /**

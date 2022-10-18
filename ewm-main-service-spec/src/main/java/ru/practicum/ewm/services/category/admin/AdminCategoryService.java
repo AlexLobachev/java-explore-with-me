@@ -13,8 +13,9 @@ public interface AdminCategoryService {
      * Метод - Изменение категории
      *
      * @param category - данные категории
+     * @return
      */
-    void updateCategory(Category category);
+    Category updateCategory(Category category);
 
     /**
      * Метод - Добавление новой категории

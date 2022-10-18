@@ -93,6 +93,6 @@ public class CompilationClientAdmin extends BaseClient {
      * @param compId - id подборки которую необходимо прикрепить
      */
     public ResponseEntity<Object> pinCompilation(long compId) {
-        return delete("/admin/compilations/" + compId + "/pin");
+        return patch("/admin/compilations/" + compId + "/pin");
     }
 }

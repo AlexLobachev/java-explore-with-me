@@ -22,14 +22,12 @@ services:
       - "9191:9191"
     depends_on:
       - ewm-db
-      #- stats-db
     environment:
       - DB_HOST=ewm-db
       - DB_PORT=5432
       - DB_NAME=main-postgre
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-
   ewm-db:
     image: postgres:14-alpine
     container_name: postgres_container_main
@@ -49,7 +47,6 @@ services:
     ports:
       - "9090:9090"
     depends_on:
-      #- ewm-main-service-spec
       - stats-db
     environment:
       - DB_HOST=stats-db
