@@ -1,6 +1,5 @@
 
 
-
 DROP TABLE IF EXISTS HIT;
 DROP TABLE IF EXISTS STATS;
 
@@ -18,4 +17,5 @@ CREATE TABLE IF NOT EXISTS STATS (
                                      uri VARCHAR(255) NOT NULL,
                                      hits INTEGER
 );
+
 

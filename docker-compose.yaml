@@ -8,9 +8,10 @@ services:
       - "8080:8080"
     depends_on:
       - ewm-main-service-spec
+      - ewm-stats-service
       - ewm-db
     environment:
-      - EWM-MAIN-SERVICE-SPEC.URL=http://server:9191
+      - EWM_MAIN_SERVICE_SPEC_URL=http://ewm-main-service-spec:9191
 
 
   ewm-main-service-spec:
@@ -21,6 +22,7 @@ services:
       - "9191:9191"
     depends_on:
       - ewm-db
+      #- stats-db
     environment:
       - DB_HOST=ewm-db
       - DB_PORT=5432
@@ -47,6 +49,7 @@ services:
     ports:
       - "9090:9090"
     depends_on:
+      #- ewm-main-service-spec
       - stats-db
     environment:
       - DB_HOST=stats-db
@@ -54,10 +57,6 @@ services:
       - DB_NAME=stats-postgre
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-
-
-
-
 
   stats-db:
     image: postgres:14-alpine
