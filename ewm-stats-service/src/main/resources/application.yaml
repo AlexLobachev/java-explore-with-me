@@ -1,10 +1,10 @@
 server:
   port: 9090
 spring:
-#  datasource:
-#    password: root
-#    username: root
-#    url: jdbc:postgresql://localhost:6542/stats-postgre
+  #datasource:
+  #  password: root
+  #  username: root
+  #  url: jdbc:postgresql://localhost:6542/stats-postgre
   datasource:
     password: ${POSTGRES_PASSWORD}
     username: ${POSTGRES_USER}
